@@ -1,13 +1,18 @@
 from flask import Blueprint, render_template, request, session, redirect, url_for
 from datetime import datetime, timezone
+from dotenv import load_dotenv
+load_dotenv()
+
+import os
 import requests
 
 main = Blueprint('main', __name__)
 
-IPINFO_TOKEN = "ed00c49c853ba0"
-ABUSEIPDB_KEY = "c9e3012fcd0f78b34d661a02a1dd6f9afa70a059962d31fa6a129fdd6ed98048335a4cbce25a9799"
-VIRUSTOTAL_KEY = "09ade77eb4a2776b84fa4e66a293ee33b3b013c40fff003685fa236456d0ca35"
-SHODAN_KEY = "HgVMSbmIyUYe0y8gRrJ9p3XYTLgmikU1"
+IPINFO_TOKEN = os.getenv("IPINFO_TOKEN")
+ABUSEIPDB_KEY = os.getenv("ABUSEIPDB_KEY")
+VIRUSTOTAL_KEY = os.getenv("VIRUSTOTAL_KEY")
+SHODAN_KEY = os.getenv("SHODAN_KEY")
+
 
 @main.route('/')
 def index():
